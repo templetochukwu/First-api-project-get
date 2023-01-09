@@ -1,4 +1,4 @@
-import Axios from "axios";
+// import Axios from "axios";
 import { useState } from "react";
 import "./App.css";
 
@@ -6,9 +6,16 @@ function App() {
   const [dog, setDog] = useState("");
 
   const getDog = () => {
-    Axios.get("https://dog.ceo/api/breeds/image/random").then((response) => {
-      setDog(response.data?.message);
-    });
+    // Axios.get("https://dog.ceo/api/breeds/image/random").then((response) => {
+    //   setDog(response.data?.message);
+    //   console.log(response);
+    // });
+
+    fetch("https://dog.ceo/api/breeds/image/random")
+      .then((response) => response.json())
+      .then((data) => {
+        setDog(data?.message);
+      });
   };
 
   return (
